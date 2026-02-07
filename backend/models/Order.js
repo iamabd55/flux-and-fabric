@@ -9,13 +9,14 @@ const orderItemSchema = new mongoose.Schema({
 });
 
 const addressSchema = new mongoose.Schema({
-  fullName: String,
-  phone: String,
-  street: String,
-  city: String,
+  fullName: { type: String, required: true },
+  phone: { type: String, required: true },
+  street: { type: String, required: true },
+  city: { type: String, required: true },
   postalCode: String,
-  country: String
+  country: { type: String, default: "Pakistan" }
 });
+
 
 const orderSchema = new mongoose.Schema(
   {
@@ -26,7 +27,10 @@ const orderSchema = new mongoose.Schema(
     },
     items: [orderItemSchema],
     shippingAddress: addressSchema,
-    totalAmount: Number,
+    totalAmount: {
+      type:Number,
+      required: true
+    },
     status: {
       type: String,
       enum: ["pending", "shipped", "delivered"],
