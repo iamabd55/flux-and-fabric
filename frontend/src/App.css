@@ -1,0 +1,57 @@
+/* Material Symbols Font */
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap');
+
+/* Inter Font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap');
+
+
+@import "tailwindcss";
+
+/* Tailwind v4 Theme Configuration */
+:root {
+  /* Custom Colors */
+  --color-primary: #2d4a3e;
+  --color-accent: #2d4a3e;
+  --color-background-light: #fdfdfd;
+  --color-background-dark: #0f1411;
+
+  /* Font Family */
+  --font-display: "Inter", sans-serif;
+
+  /* Border Radius */
+  --radius-DEFAULT: 0rem;
+  --radius-lg: 0.125rem;
+  --radius-xl: 0.25rem;
+  --radius-full: 9999px;
+}
+
+
+/* Custom Scrollbar Styles */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2d4a3e;
+}
+
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Hero Height */
+.hero-height {
+  height: 100vh;
+}
+.text-primary{
+  color:#0f1411;
+}
