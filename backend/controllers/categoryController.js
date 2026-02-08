@@ -3,9 +3,6 @@ import Category from "../models/Category.js";
 export const getCategories = async (req, res) => {
   try {
     const categories = await Category.find().populate("parentCategory", "name");
-    if (categories.length == 0) {
-      return res.status(200).json({ message: "No categories found" });
-    }
     res.status(200).json(categories);
   } catch (error) {
     console.error(error);
@@ -16,15 +13,25 @@ export const getCategories = async (req, res) => {
 //Admin-only-----
 export const createCategory = async (req, res) => {
   try {
-    const { name, parentCategory } = req.body;
+    const { name, comment, imageUrl, parentCategory } = req.body;
 
-    if (!name) {
+    if (!name || name.trim() === "") {
       return res.status(400).json({ message: "Category name is required" });
+    }
+    if (!comment)
+      return res.status(400).json({ message: "Comment is required" });
+    if (!imageUrl || imageUrl.trim() === "") {
+      return res.status(400).json({ message: "Image URL is required" });
+    }
+    if (comment !== undefined && comment.trim() === "") {
+      return res
+        .status(400)
+        .json({ message: "Comment cannot be empty if provided" });
     }
     const checkCategoryinDB = await Category.findOne({
       name: { $regex: `^${name}$`, $options: "i" },
     });
-    
+
     if (checkCategoryinDB) {
       return res
         .status(400)
@@ -33,6 +40,8 @@ export const createCategory = async (req, res) => {
 
     const category = new Category({
       name,
+      comment: comment ? comment.trim() : undefined,
+      imageUrl: imageUrl ? imageUrl.trim() : undefined,
       parentCategory: parentCategory || null,
     });
 
@@ -48,7 +57,7 @@ export const createCategory = async (req, res) => {
 // @access  Admin
 export const updateCategory = async (req, res) => {
   try {
-    const { name, parentCategory } = req.body;
+    const { name, comment, imageUrl, parentCategory } = req.body;
 
     const category = await Category.findById(req.params.id);
     if (!category) {
@@ -56,6 +65,16 @@ export const updateCategory = async (req, res) => {
     }
 
     category.name = name || category.name;
+    if (comment !== undefined) {
+      if (comment.trim() === "") {
+        return res.status(400).json({ message: "Comment cannot be empty" });
+      }
+      category.comment = comment.trim();
+    }
+    if (imageUrl !== undefined) {
+      category.imageUrl = imageUrl.trim();
+    }
+
     category.parentCategory =
       parentCategory !== undefined ? parentCategory : category.parentCategory;
 

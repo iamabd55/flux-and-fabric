@@ -7,6 +7,14 @@ const categorySchema = new mongoose.Schema({
     unique:true,
     trim:true
   },
+  comment:{
+    type: String,
+    trim:true
+  },
+  imageUrl: {
+      type: String, // cloudinary / s3 / local URL
+      trim: true,
+  },
   parentCategory: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Category",
