@@ -1,15 +1,13 @@
-import React from 'react';
-
+import logo from '../../assets/logo5-cropped.svg';
 const Header = () => {
   return (
     <header className="fixed top-0 z-50 w-full border-b border-white/10 bg-white/10 dark:bg-black/10 backdrop-blur-md">
       <div className="mx-auto max-w-360 px-6 lg:px-10 h-20 flex items-center justify-between">
         <div className="flex items-center gap-10">
           <a className="flex items-center gap-3 group" href="#">
-            <div className="size-8 text-white drop-shadow-sm">
-             {/* logo */}
+            <div className="w-4xs sm:w-2xs text-white drop-shadow-sm ">
+             <img src={logo}  alt="Flux & Fabric Logo" />
             </div>
-            <span className="text-xl font-bold tracking-tight text-white drop-shadow-md">Flux & Fabric</span>
           </a>
           <nav className="hidden lg:flex items-center gap-8">
             <a className="text-sm font-semibold text-white/90 hover:text-white transition-colors" href="#">Men</a>

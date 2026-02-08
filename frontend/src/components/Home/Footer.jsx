@@ -1,5 +1,5 @@
 import React from 'react';
-
+import logo from '../../assets/logo5-cropped.svg';
 const Footer = () => {
   return (
     <footer className="mt-auto border-t border-gray-800 bg-[#0f1411] pt-24 pb-12">
@@ -7,10 +7,9 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-20">
           <div className="flex flex-col gap-6">
             <div className="flex items-center gap-3 text-white">
-              <div className="size-6">
-                <span className="material-symbols-outlined text-[24px]">shopping_bag</span>
+              <div className="h-max w-max">
+                <img src={logo} alt="Flux & Fabric Logo" />
               </div>
-              <span className="font-black text-xl uppercase tracking-tighter">Flux-and-Fabric</span>
             </div>
             <p className="text-sm text-gray-500 leading-relaxed max-w-xs">
               Curated fashion for the conscious consumer. Quality materials, timeless designs.
@@ -37,7 +36,7 @@ const Footer = () => {
             </ul>
           </div>
           <div>
-            <h4 className="font-bold text-[10px] uppercase tracking-[0.2em] text-white mb-8">Support</h4>
+            <h4 className="font-bold text-[15px] uppercase tracking-widest text-white mb-8">Support</h4>
             <ul className="flex flex-col gap-4 text-xs font-medium text-gray-500 uppercase tracking-widest">
               <li><a className="hover:text-primary transition-colors" href="#">Help Center</a></li>
               <li><a className="hover:text-primary transition-colors" href="#">Shipping Info</a></li>
@@ -46,7 +45,7 @@ const Footer = () => {
             </ul>
           </div>
           <div>
-            <h4 className="font-bold text-[10px] uppercase tracking-[0.2em] text-white mb-6">Stay in the loop</h4>
+            <h4 className="font-bold text-[15px] uppercase tracking-widest text-white mb-6">Stay in the loop</h4>
             <p className="text-xs text-gray-500 mb-6 leading-relaxed">
               Subscribe to receive updates, access to exclusive deals, and more.
             </p>

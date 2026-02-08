@@ -1,9 +1,10 @@
 import React from 'react';
 
 const ProductCard = ({ image, name, price, originalPrice, color, onSale = false }) => {
+  originalPrice+=1100;
   return (
-    <div className="group flex flex-col gap-4">
-      <div className="relative aspect-3/4 w-full overflow-hidden bg-gray-50">
+    <div className="flex flex-col gap-4">
+      <div className="group relative aspect-3/4 w-full overflow-hidden bg-gray-50 cursor-pointer">
         {onSale && (
           <div className="absolute top-4 left-4 z-10">
             <span className="px-3 py-1 bg-primary text-white text-[9px] font-black uppercase tracking-[0.2em]">
@@ -13,12 +14,12 @@ const ProductCard = ({ image, name, price, originalPrice, color, onSale = false 
         )}
         <img 
           alt={name} 
-          className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" 
+          className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105 group-hover:blur-xs" 
           src={image}
         />
         <div className="absolute inset-x-0 bottom-0 p-4 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
-          <button className="w-full bg-primary text-white py-3 font-bold text-[10px] uppercase tracking-widest hover:bg-primary/90 transition-colors shadow-lg">
-            Add to Cart
+          <button className="w-full bg-primary text-white py-3 font-bold text-[10px] uppercase tracking-widest group-hover:bg-black transition-colors shadow-lg group-hover:cursor-pointer">
+            View Details
           </button>
         </div>
         {!onSale && (
@@ -34,11 +35,11 @@ const ProductCard = ({ image, name, price, originalPrice, color, onSale = false 
           <h3 className="text-sm font-bold text-[#111318] uppercase tracking-tight">
             {name}
           </h3>
-          <div className="flex flex-col items-end">
-            <p className="text-sm font-medium text-primary">${price.toFixed(2)}</p>
+          <div className="flex flex-row-reverse gap-3 items-end">
+            <p className="text-sm font-medium text-primary">Rs.{price.toFixed(2)}</p>
             {originalPrice && (
               <p className="text-[10px] text-gray-400 line-through tracking-widest">
-                ${originalPrice.toFixed(2)}
+                Rs.{originalPrice.toFixed(2)}
               </p>
             )}
           </div>
